@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script defer src="../static/srcipt.js"></script>
+    <title>Product Expiry</title>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li id="add"> 
+                <button data-modal-target="#modal">
+                    <span class="material-symbols-outlined" id="plus">
+                        add
+                    </span>
+                    Add a product
+                </button>
+            </li>
+            <li class="green">Logout</li>
+        </ul>
+    </div>
+    <div class="info">
+        <div class="box" id="total">
+            <div id="num">4</div>
+            Total
+        </div>
+        
+        <div class="box" id="batch">
+            <div id="num">4</div>
+            Batch
+        </div>
+        <div class="box" id="expired">
+            <div id="num">4</div>
+            Exipred products
+        </div>
+    </div>
+
+    
+    <div class="modal" id="modal">
+        <div class="modal-header">
+          <div class="title">Add a product</div>
+          <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form class="form">
+              <input type="email" placeholder="Email">
+              <input type="password" placeholder="Password">
+              <button type="submit">Submit</button>
+              <p id="register">First time, <a href="./sign-up.html">Register here</a></p>
+          </form>
+        </div>
+      </div>
+      <div id="overlay"></div>
+
+    <div class="container">
+        <table>
+            <th>Product Name</th>
+            <th>Manufacturer</th>
+            <th>Bar Code</th>
+            <th>Production date</th>
+            <th>Expriry date</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <tr>
+                <td>Milo</td>
+                <td>Nestle</td>
+                <td>4738290948767288</td>
+                <td>23/05/2022</td>
+                <td>23/05/2024</td>
+                <td>3</td>
+                <td>25</td>
+                <td><button id="edit">
+                    <span class="material-symbols-outlined">
+                        edit
+                        </span>
+                </button></td>
+                <td><button id="delete">
+                    <span class="material-symbols-outlined">
+                        delete
+                        </span>
+                </button></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

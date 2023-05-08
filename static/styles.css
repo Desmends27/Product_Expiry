@@ -1,0 +1,214 @@
+*
+{
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/*Icons*/
+.material-symbols-outlined {
+    color:white;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+body
+{
+    background-color: rgb(221, 237, 232);
+}
+.menu
+{
+    background-color: red;
+    font-size: 20px;
+}
+.menu  ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+
+  }
+  .menu li{
+    margin:20px
+  }
+
+  .info
+  {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+  }
+  .box
+  {
+    border: 1px solid black;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    color: white;
+    font-size: 20px;
+  }
+  #num
+  {
+    display: flex;
+    align-items: last baseline;
+    padding-left: 50px; 
+    font-size: 50px;
+    background-color: red;
+    height: 80%;
+  }
+  #total
+  {
+    background-color: rgb(35, 183, 35);
+  }
+  #batch
+  {
+    background-color: rgb(182, 23, 23);
+  }
+  #expired
+  {
+    background-color: rgb(12, 12, 160);
+  }
+
+  .container {
+    width: 100%;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  
+  td {
+    padding: 35px;
+  }
+  
+  tr {
+    height: 40px;
+  }
+  
+   table button
+  {
+    width: 30px;
+    height: 30px;
+    background:src;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #delete
+  {
+    background-color: red;
+  }
+  #edit
+  {
+    background-color: green;
+  }
+
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+  }
+  
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+  
+  .modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .modal-header .close-button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    padding: 10px 15px;
+  }
+  
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+  }
+  
+  #overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+#plus
+{
+    color: green;
+    padding: 0;
+    margin: 0;
+    border: 2px solid black;
+    font-size: 10px;
+}
+#add button
+{
+    width: 150px;
+    height: 40px;
+    background-color: rgb(240, 240, 85);
+}
+.form {
+	margin:10% auto;
+	width:300px;
+	min-height:300px;
+	background:white;
+	padding:2.5% 5% 2.5%;
+	border-radius:2.5%;
+}
+
+input {
+   margin: 20px;
+   border: none;
+   border-bottom: 2px solid black;
+   
+}

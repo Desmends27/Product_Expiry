@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
+    <title>Create Account</title>
 </head>
 <body>
     <div class="form">
         <span>Login Form</span>
-
         <form method="POST">
             {% csrf_token %}
             <input type="text" name="username" placeholder="Username">
+            <input type="email" name="email" placeholder="Email">
             <input type="password" name="password" placeholder="Password">
-            <button type="submit">Login</button>
+            <button type="submit">Create Account</button>
         </form>
     </div>
 </body>

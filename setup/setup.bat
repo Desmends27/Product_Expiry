@@ -8,7 +8,7 @@ IF EXIST venv (
 )
 
 echo Activating virtual environment...
-venv\Scripts\activate.bat
+call venv\Scripts\activate.bat
 echo Installing requirements...
 pip install -r requirements.txt
 echo Done installing requirements

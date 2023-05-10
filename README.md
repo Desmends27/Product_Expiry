@@ -12,7 +12,7 @@ The program allows you to:
 
 ## Installation
 1. Clone the repository in an empty directory.
-2. On Windows run ```setup\setup.bat```, on Unix ```setup/setup.sh```.
+2. On Windows run ```setup\setup.bat```, on Unix ```setup/setup.sh``` in the terminal.
 3. Fill in the required data for the .env file created.
 4. Run the server using ```python manage.py runserver```.
 5. Visit http://localhost:8000/ in your browser.

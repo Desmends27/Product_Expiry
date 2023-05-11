@@ -14,28 +14,28 @@
     <div class="menu">
         <ul>
             <li id="add"> 
-                <a href="{% url 'product:add_product' %}"><button data-modal-target="#modal">
+                <button data-modal-target="#modal">
                     <span class="material-symbols-outlined" id="plus">
                         add
                     </span>
                     Add a product
-                </button></a>
+                </button>
             </li>
             <a href="{% url 'authentication:logout_user' %}"><li class="green">Logout</li></a>
         </ul>
     </div>
     <div class="info">
         <div class="box" id="total">
-            <div id="num">4</div>
+            <div id="num">{{total_products}}</div>
             Total
         </div>
         
         <div class="box" id="batch">
-            <div id="num">4</div>
+            <div id="num">{{total_batches}}</div>
             Batch
         </div>
         <div class="box" id="expired">
-            <div id="num">4</div>
+            <div id="num">{{total_expired_products}}</div>
             Exipred products
         </div>
     </div>
@@ -47,14 +47,15 @@
           <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modal-body">
-          <form class="form">
-            <input type="text" name="product_name" placeholder="Product Name">
-            <input type="text" name="manufacturer" placeholder="Manufacturer">
-            <input type="text" name="bar_code" placeholder="Bar Code">
-            <input type="date" name="production_date" placeholder="Production date">
-            <input type="date" name="expiry_date" placeholder="Expiry date">
-            <input type="number" name="quantity" placeholder="Quantity">
-            <input type="number" name="price" placeholder="Price(in cedis)">
+          <form class="form" method="post" action="{% url 'product:add_product' %}">{% csrf_token %}
+            <input type="hidden" name="action" value="addProduct">
+            <input type="text" name="Name" placeholder="Product Name">
+            <input type="text" name="Manufacturer" placeholder="Manufacturer">
+            <input type="text" name="BarCode" placeholder="Bar Code">
+            <input type="date" name="ProductionDate" placeholder="Production date">
+            <input type="date" name="ExpiryDate" placeholder="Expiry date">
+            <input type="number" name="Quantity" placeholder="Quantity">
+            <input type="number" name="Price" placeholder="Price(in cedis)">
               <button type="submit">Add</button>
           </form>
         </div>
@@ -75,13 +76,13 @@
 
             {% for product in products %}
             <tr>
-                <td>Milo</td>
-                <td>Nestle</td>
-                <td>4738290948767288</td>
-                <td>23/05/2022</td>
-                <td>23/05/2024</td>
-                <td>3</td>
-                <td>25</td>
+                <td>{{product.Name}}</td>
+                <td>{{product.Manufacturer}}</td>
+                <td>{{product.BarCode}}</td>
+                <td>{{product.ProductionDate}}</td>
+                <td>{{product.ExpiryDate}}</td>
+                <td>{{product.Quantity}}</td>
+                <td>{{product.Price}}</td>
                 <td><a href="{% url 'product:edit_product' pk=product.pk %}"><button id="edit">
                     <span class="material-symbols-outlined">
                         edit

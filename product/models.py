@@ -5,6 +5,7 @@ from django.db import models
 class Product(models.Model):
     Name = models.TextField()
     Manufacturer = models.TextField()
+    BarCode = models.TextField(blank=True, null=True)
     ProductionDate = models.DateField()
     ExpiryDate = models.DateField()
     Quantity = models.IntegerField()

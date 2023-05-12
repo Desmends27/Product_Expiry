@@ -13,34 +13,51 @@
 <body>
     <div class="menu">
         <ul>
-            <li id="add"> 
-                <button data-modal-target="#modal">
-                    <span class="material-symbols-outlined" id="plus">
-                        add
-                    </span>
-                    Add a product
-                </button>
-            </li>
+          <li>
+            <button id="sendmail">
+              Send Email
+            </button>
+          </li>
             <a href="{% url 'authentication:logout_user' %}"><li class="green">Logout</li></a>
         </ul>
     </div>
     <div class="info">
         <div class="box" id="total">
-            <div id="num">{{total_products}}</div>
-            Total
+            <div id="num">{{total_products}}
+             
+              <p>Total</p>
+            </div>
+           
         </div>
         
         <div class="box" id="batch">
-            <div id="num">{{total_batches}}</div>
-            Batch
+            <div id="num">{{total_batches}}
+              <p> Batch</p>
+            </div>
+           
         </div>
         <div class="box" id="expired">
-            <div id="num">{{total_expired_products}}</div>
-            Exipred products
+            <div id="num">{{total_expired_products}}
+              <p>Exipred</p>
+            </div>
+           
         </div>
     </div>
 
-    
+
+    <div class="addsearch">
+      <button data-modal-target="#modal" id="add">
+        <span class="material-symbols-outlined" id="plus">
+            add
+        </span>
+        Add Product
+    </button>
+      <div class="search">
+        <input type="text" name="search" placeholder="Search products">
+        <button >Search</button>
+      </div>
+    </div>
+
     <div class="modal" id="modal">
         <div class="modal-header">
           <div class="title">Add a product</div>
@@ -48,19 +65,64 @@
         </div>
         <div class="modal-body">
           <form class="form" method="post" action="{% url 'product:add_product' %}">{% csrf_token %}
-            <input type="hidden" name="action" value="addProduct">
-            <input type="text" name="Name" placeholder="Product Name">
-            <input type="text" name="Manufacturer" placeholder="Manufacturer">
-            <input type="text" name="BarCode" placeholder="Bar Code">
-            <input type="date" name="ProductionDate" placeholder="Production date">
-            <input type="date" name="ExpiryDate" placeholder="Expiry date">
-            <input type="number" name="Quantity" placeholder="Quantity">
-            <input type="number" name="Price" placeholder="Price(in cedis)">
+            <input type="hidden" name="action" value="addProduct" required="">
+            <input type="text" name="Name" placeholder="Product Name" required="">
+            <input type="text" name="Manufacturer" placeholder="Manufacturer" required="">
+            <input type="text" name="BarCode" placeholder="Bar Code" required="">
+            <input required="" type="text" placeholder="Production date" onfocus="(this.type='date')" name="ProductionDate"/>
+            <input required="" type="text" placeholder="Expiry date" onfocus="(this.type='date')" name="ExpiryDate" />
+            <input type="number" name="Quantity" placeholder="Quantity" required="">
+            <input type="number" name="Price" placeholder="Price(in cedis)" required="">
               <button type="submit">Add</button>
           </form>
         </div>
       </div>
       <div id="overlay"></div>
+
+
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <div class="title">Add a product</div>
+          <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form class="form" method="post" action="{% url 'product:add_product' %}">{% csrf_token %}
+            <input type="hidden" name="action" value="addProduct" required="">
+            <input type="text" name="Name" placeholder="Product Name" required="">
+            <input type="text" name="Manufacturer" placeholder="Manufacturer" required="">
+            <input type="text" name="BarCode" placeholder="Bar Code" required="">
+            <input required="" type="text" placeholder="Production date" onfocus="(this.type='date')" name="ProductionDate"/>
+            <input required="" type="text" placeholder="Expiry date" onfocus="(this.type='date')" name="ExpiryDate" />
+            <input type="number" name="Quantity" placeholder="Quantity" required="">
+            <input type="number" name="Price" placeholder="Price(in cedis)" required="">
+              <button type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+      <div id="overlay"></div>
+      
+      <div class="modal" id="modal2">
+        <div class="modal-header">
+          <div class="title">Add a product</div>
+          <button data-close-button class="close-button">&times;</button>
+        </div>
+        <!--NEW MODAL FOR EDITING, PASTE INFOR FOR PRODUCT TO EDIT HERE-->
+        <div class="modal-body">
+          <form class="form" method="post" action="{% url 'product:add_product' %}">{% csrf_token %}
+            <input type="hidden" name="action" value="addProduct" required="">
+            <input type="text" name="Name" placeholder="Product Name" required="">
+            <input type="text" name="Manufacturer" placeholder="Manufacturer" required="">
+            <input type="text" name="BarCode" placeholder="Bar Code" required="">
+            <input required="" type="text" placeholder="Production date" onfocus="(this.type='date')" name="ProductionDate"/>
+            <input required="" type="text" placeholder="Expiry date" onfocus="(this.type='date')" name="ExpiryDate" />
+            <input type="number" name="Quantity" placeholder="Quantity" required="">
+            <input type="number" name="Price" placeholder="Price(in cedis)" required="">
+              <button type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+      <div id="overlay2"></div>
+
 
     <div class="container">
         <table>
@@ -83,11 +145,11 @@
                 <td>{{product.ExpiryDate}}</td>
                 <td>{{product.Quantity}}</td>
                 <td>{{product.Price}}</td>
-                <td><a href="{% url 'product:edit_product' pk=product.pk %}"><button id="edit">
+                <td><button id="edit" data-modal-target="#modal2">
                     <span class="material-symbols-outlined">
                         edit
                         </span>
-                </button></a></td>
+                </button></td>
                 <td><a href="{% url 'product:delete_product' pk=product.pk %}"><button id="delete">
                     <span class="material-symbols-outlined">
                         delete

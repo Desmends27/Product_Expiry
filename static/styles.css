@@ -15,23 +15,40 @@
 
 body
 {
-    background-color: rgb(221, 237, 232);
+    background-color: #f2f2f2;
+}
+button
+{
+  border-radius: 20px;
 }
 .menu
 {
-    background-color: red;
+    background-color:rgb(170, 170, 8);
     font-size: 20px;
+    width: 250px;
+    height: 40px;
+    position: relative;
+    left: 80%;
+    border-radius: 20px;
+   
 }
-.menu  ul {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    list-style: none;
+.menu ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.menu li{
+  margin: 5px;
+  margin-right: 7px;
+}
+.menu li button
+{
+  background-color: rgb(187, 221, 17);
+}
 
-  }
-  .menu li{
-    margin:20px
-  }
+.menu a{
+  text-decoration: none;
+}
 
   .info
   {
@@ -53,26 +70,48 @@ body
   }
   #num
   {
+    color: rgb(9, 9, 0);
     display: flex;
     align-items: last baseline;
-    padding-left: 50px; 
+    padding-left: 20px; 
     font-size: 50px;
-    background-color: red;
-    height: 80%;
+    height: 100%;
+  }
+  #num p{
+    position: relative;
+    left:65%;
+    font-size: 15px;
+    float: right;
+  }
+  #total #num
+  {
+    background:url("./images/sigma.png");
+    background-size:50%;
+    background-repeat: no-repeat;
   }
   #total
   {
-    background-color: rgb(35, 183, 35);
+  color: black;
   }
   #batch
   {
     background-color: rgb(182, 23, 23);
   }
+  #batch #num
+  {
+    background:url("./images/calender.png");
+    background-size:cover;
+  }
   #expired
   {
+    
     background-color: rgb(12, 12, 160);
   }
-
+  #expired #num
+  {
+    background:url("./images/product-expired-rubber-stamp-vector-13585910.jpg");
+    background-size:cover;
+  }
   .container {
     width: 100%;
   }
@@ -192,11 +231,11 @@ body
     border: 2px solid black;
     font-size: 10px;
 }
-#add button
+#add
 {
-    width: 150px;
-    height: 40px;
-    background-color: rgb(240, 240, 85);
+  float: right;
+  background-color: yellowgreen;
+  height: 35px;
 }
 .form {
 	margin:10% auto;
@@ -248,3 +287,12 @@ body
   border: none;
   margin: 20px;
 }
+.search
+{
+  float: left;
+}
+.search button
+{
+  background-color: rgb(28, 217, 28);
+}
+

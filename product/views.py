@@ -59,6 +59,9 @@ def expired_products_view(request):
         if action == 'addProduct':
             add_product(request)
             return render(request, "index.html", {'products': expired_products})
+        elif action == 'editProduct':
+            add_product(request)
+            return render(request, "index.html", {'products': expired_products})
         # Send email
         subject = "Expired Products"
         notify_admin(subject, expired_products)

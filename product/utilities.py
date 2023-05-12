@@ -3,6 +3,9 @@ from django.template.loader import render_to_string
 from django.db.models import Q
 from .models import Product
 from django.core.mail import EmailMultiAlternatives
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def search_products(query):
@@ -31,6 +34,7 @@ def notify_admin(subject, products):
     )
     body = "List of expiring products"
     sender = os.environ.get("EMAIL_HOST_USER")
+    print(sender)
     receivers = [os.environ.get("EMAIL_HOST_USER")]
     try:
         messsage = EmailMultiAlternatives(

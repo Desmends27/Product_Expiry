@@ -60,7 +60,7 @@ def expired_products_view(request):
             add_product(request)
             return render(request, "index.html", {'products': expired_products})
         elif action == 'editProduct':
-            add_product(request)
+            edit_product(request)
             return render(request, "index.html", {'products': expired_products})
         # Send email
         subject = "Expired Products"
@@ -109,6 +109,9 @@ def products(request):
         if action == 'addProduct':
             add_product(request)
             return render(request, "index.html", {'products': product_list})
+        elif action == 'editProduct':
+            edit_product(request)
+            return render(request, "index.html", {'products': product_list})
         # Send email
         subject = "Details about all products"
         notify_admin(subject, product_list)
@@ -125,6 +128,7 @@ def products(request):
 def search(request):
     query = request.GET.get('q')
     product_list = search_products(query)
+    print(product_list)
     total_products = product_list.count()
     total_expired_products = product_list.filter(ExpiryDate__lt=date.today()).count()
     total_batches = product_list.values('Manufacturer').annotate(total=Count('Manufacturer')).count()

@@ -34,7 +34,6 @@ def notify_admin(subject, products):
     )
     body = "List of expiring products"
     sender = os.environ.get("EMAIL_HOST_USER")
-    print(sender)
     receivers = [os.environ.get("EMAIL_HOST_USER")]
     try:
         messsage = EmailMultiAlternatives(

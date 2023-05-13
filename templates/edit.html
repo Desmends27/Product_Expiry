@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+</head>
+<body>
+    <div>
+        <form class="form" method="post" action="{% url 'product:add_product' %}">{% csrf_token %}
+          <input type="hidden" name="action" value="editProduct" required="">
+          <input type="text" name="Name" placeholder="Product Name" required="">
+          <input type="text" name="Manufacturer" placeholder="Manufacturer" required="">
+          <input type="text" name="BarCode" placeholder="Bar Code" required="">
+          <input required="" type="text" placeholder="Production date" onfocus="(this.type='date')" name="ProductionDate"/>
+          <input required="" type="text" placeholder="Expiry date" onfocus="(this.type='date')" name="ExpiryDate" />
+          <input type="number" name="Quantity" placeholder="Quantity" required="">
+          <input type="number" name="Price" placeholder="Price(in cedis)" required="">
+          <button type="submit">Add</button>
+        </form>
+      </div>
+</body>
+</html>

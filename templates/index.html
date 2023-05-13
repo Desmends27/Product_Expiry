@@ -55,6 +55,8 @@
         Add Product
     </button>
         <form action="{% url 'product:search' %}" method="get">
+      <input type="checkbox" name="filter">
+      <label for="filter">Expired Products Only</label>
       <div class="search">
         <input type="text" value="" name="q" placeholder="Search products">
           <button>Search</button>
@@ -99,33 +101,13 @@
             <input required="" type="text" placeholder="Expiry date" onfocus="(this.type='date')" name="ExpiryDate" />
             <input type="number" name="Quantity" placeholder="Quantity" required="">
             <input type="number" name="Price" placeholder="Price(in cedis)" required="">
-              <button type="submit">Add</button>
+             <button type="submit">Add</button>
           </form>
         </div>
       </div>
       <div id="overlay"></div>
 
-      <div class="modal" id="modal2">
-        <div class="modal-header">
-          <div class="title">Add a product</div>
-          <button data-close-button class="close-button">&times;</button>
-        </div>
-        <!--NEW MODAL FOR EDITING, PASTE INFOR FOR PRODUCT TO EDIT HERE-->
-        <div class="modal-body">
-          <form class="form" method="post" action="{% url 'product:add_product' %}">{% csrf_token %}
-            <input type="hidden" name="action" value="addProduct" required="">
-            <input type="text" name="Name" placeholder="Product Name" required="">
-            <input type="text" name="Manufacturer" placeholder="Manufacturer" required="">
-            <input type="text" name="BarCode" placeholder="Bar Code" required="">
-            <input required="" type="text" placeholder="Production date" onfocus="(this.type='date')" name="ProductionDate"/>
-            <input required="" type="text" placeholder="Expiry date" onfocus="(this.type='date')" name="ExpiryDate" />
-            <input type="number" name="Quantity" placeholder="Quantity" required="">
-            <input type="number" name="Price" placeholder="Price(in cedis)" required="">
-              <button type="submit">Save</button>
-          </form>
-        </div>
-      </div>
-      <div id="overlay2"></div>
+
 
 
     <div class="container">

@@ -12,18 +12,13 @@
   'GRAD' 0,
   'opsz' 48
 }
-*
-{
-  background-color: black;
-}
 body
 {
     background-color: #f2f2f2;
 }
 button
 {
-  border-radius: 20px;
-  pointer-events: all;
+  cursor: pointer;
 }
 .menu
 {
@@ -43,16 +38,18 @@ button
 }
 .menu li{
   margin: 5px;
-  margin-right: 7px;
+  margin-right: 20px;
 }
 .menu li button
 {
   background-color: rgb(187, 221, 17);
 }
-
-.menu a{
+.menu a
+{
   text-decoration: none;
+  color: black;
 }
+
 
   .info
   {
@@ -118,6 +115,10 @@ button
   }
   .container {
     width: 100%;
+  }
+  .container td button
+  {
+    border-radius: 20px;
   }
   
   table {
@@ -298,5 +299,6 @@ button
 .search button
 {
   background-color: rgb(28, 217, 28);
+  border-radius: 20px;
 }
 

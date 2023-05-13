@@ -55,11 +55,14 @@
         Add Product
     </button>
         <form action="{% url 'product:search' %}" method="get">
-      <input type="checkbox" name="filter">
-      <label for="filter">Expired Products Only</label>
-      <div class="search">
+       <div class="search">
         <input type="text" value="" name="q" placeholder="Search products">
           <button>Search</button>
+      </div>
+        </form>
+        <form action="{% url 'product:expired_products' %}" method="get">
+      <div class="search">
+          <button>Expired</button>
       </div>
         </form>
     </div>

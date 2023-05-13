@@ -19,7 +19,6 @@ def add_product(request):
         ExpiryDate = request.POST.get('ExpiryDate')
         Quantity = request.POST.get('Quantity')
         Price = request.POST.get('Price')
-        print(BarCode)
         Product.objects.create(
             Name=Name,
             Manufacturer=Manufacturer,
@@ -40,7 +39,6 @@ def edit_product(request, pk):
         product.Manufacturer = request.POST.get('Manufacturer')
         product.BarCode = request.POST.get('BarCode')
         if request.POST.get('ProductionDate'):
-            print("change date")
             product.ProductionDate = request.POST.get('ProductionDate')
         if request.POST.get('ExpiryDate'):
             product.ExpiryDate = request.POST.get('ExpiryDate')
@@ -48,7 +46,6 @@ def edit_product(request, pk):
         product.Price = request.POST.get('Price')
         product.save()
         return redirect("product:products")
-    print(date)
     return render(request, "edit.html", {"product": product})
 
 
@@ -127,7 +124,6 @@ def products(request):
 def search(request):
     query = request.GET.get('q')
     product_list = search_products(query)
-    print(product_list)
     total_products = product_list.count()
     total_expired_products = product_list.filter(ExpiryDate__lt=date.today()).count()
     total_batches = product_list.values('Manufacturer').annotate(total=Count('Manufacturer')).count()

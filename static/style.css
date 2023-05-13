@@ -1,0 +1,232 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/*Icons*/
+.material-symbols-outlined {
+    color:white;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+/*Modal*/
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+    height: 660px;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-header .close-button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 10px 15px;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+#plus
+{
+    color: green;
+    padding: 0;
+    margin: 0;
+    border: 2px solid black;
+    font-size: 10px;
+}
+.form {
+	margin:10% auto;
+	width:300px;
+	min-height:300px;
+	background:white;
+	padding: 20px;
+	border-radius:2.5%;
+}
+.form input
+{
+width: 200px;
+height: 50px;
+border: none;
+border-bottom: 1px solid black;
+margin: 20px;
+}
+.form button
+{
+width: 200px;
+height: 50px;
+border: none;
+margin: 20px;
+}
+.modal form {
+	margin:5% 10% 10% 10% ;
+	width:300px;
+	min-height:300px;
+	background:white;
+	padding: 20px;
+	border-radius:2.5%;
+}
+.modal form input
+{
+width: 300px;
+height: 50px;
+border: none;
+border-bottom: 1px solid black;
+margin: 5px 10px 10px 20px;
+}
+.modal form button
+{
+width: 300px;
+height: 50px;
+border: none;
+margin: 20px;
+}
+
+
+body{
+    padding: 20px;
+}
+button{
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(58, 175, 58);
+}
+a{
+    text-decoration: none;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+header p{
+    font-size: 40px;
+    font-weight: 900;
+}
+header .right{
+    display: flex;
+}
+header .right button{
+    margin: 5px;
+}
+header #logout{
+    background-color: rgb(0, 73, 0);
+}
+
+.nav, .details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.nav p{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.nav form input{
+    height: 25px;
+    width: 300px;
+}
+@media screen and (max-width:700px) {
+    .nav form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav form input{
+        width: 100%;
+    }
+}
+.nav form button{
+    margin-top: 5px;
+    width: max-content;
+}
+
+.details p{
+    font-size: 20px;
+    text-align: center;
+}
+.details p:nth-child(even){
+    font-size: 23px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: rgb(204, 204, 204);
+}
+th, td {
+    border-bottom: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    font-size: 20px;
+    background-color: rgb(77, 77, 77);
+}
+table:nth-child(even){
+    background-color: rgb(233, 233, 233);
+}
+table #delete
+{
+    background-color: red;
+}
+#edit
+{
+    background-color: green;
+}

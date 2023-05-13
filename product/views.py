@@ -14,21 +14,21 @@ def add_product(request):
     if request.method == "POST":
         Name = request.POST.get('Name')
         Manufacturer = request.POST.get('Manufacturer')
-        BarCode = request.POST.get('Barcode')
+        BarCode = request.POST.get('BarCode')
         ProductionDate = request.POST.get('ProductionDate')
         ExpiryDate = request.POST.get('ExpiryDate')
         Quantity = request.POST.get('Quantity')
         Price = request.POST.get('Price')
         print(BarCode)
         Product.objects.create(
-            Name = Name,
-            Manufacturer = Manufacturer, 
-            BarCode = BarCode, 
-            ProductionDate = ProductionDate, 
-            ExpiryDate = ExpiryDate, 
-            Quantity = Quantity, 
-            Price = Price
-            )
+            Name=Name,
+            Manufacturer=Manufacturer,
+            BarCode=BarCode,
+            ProductionDate=ProductionDate,
+            ExpiryDate=ExpiryDate,
+            Quantity=Quantity,
+            Price=Price
+        )
         return redirect("product:products")
 
 
@@ -38,13 +38,18 @@ def edit_product(request, pk):
     if request.method == "POST":
         product.Name = request.POST.get('Name')
         product.Manufacturer = request.POST.get('Manufacturer')
-        product.ProductionDate = request.POST.get('ProductionDate')
-        product.ExpiryDate = request.POST.get('ExpiryDate')
+        product.BarCode = request.POST.get('BarCode')
+        if request.POST.get('ProductionDate'):
+            print("change date")
+            product.ProductionDate = request.POST.get('ProductionDate')
+        if request.POST.get('ExpiryDate'):
+            product.ExpiryDate = request.POST.get('ExpiryDate')
         product.Quantity = request.POST.get('Quantity')
         product.Price = request.POST.get('Price')
         product.save()
-        return redirect('edit_product', pk=product.pk)
-    return render(request, "edit_product.html")
+        return redirect("product:products")
+    print(date)
+    return render(request, "edit.html", {"product": product})
 
 
 @login_required(login_url='authentication:login')
@@ -59,19 +64,16 @@ def expired_products_view(request):
         if action == 'addProduct':
             add_product(request)
             return render(request, "index.html", {'products': expired_products})
-        elif action == 'editProduct':
-            edit_product(request)
-            return render(request, "index.html", {'products': expired_products})
         # Send email
         subject = "Expired Products"
         notify_admin(subject, expired_products)
         return HttpResponse('Email sent successfully!')
-    return render(request, "index.html", 
-                  {'products': expired_products, 
+    return render(request, "index.html",
+                  {'products': expired_products,
                    'total_products': total_products,
                    'total_expired_products': total_expired_products,
                    'total_batches': total_batches}
-                   )
+                  )
 
 
 def expiring_products_view(request, days_threshold):
@@ -90,12 +92,12 @@ def expiring_products_view(request, days_threshold):
         subject = "Products due to expire"
         notify_admin(subject, expiring_products)
         return HttpResponse('Email sent successfully!')
-    return render(request, "index.html", 
-                  {'products': expiring_products, 
+    return render(request, "index.html",
+                  {'products': expiring_products,
                    'total_products': total_products,
                    'total_expired_products': total_expired_products,
                    'total_batches': total_batches}
-                   )
+                  )
 
 
 @login_required(login_url='authentication:login')
@@ -109,19 +111,16 @@ def products(request):
         if action == 'addProduct':
             add_product(request)
             return render(request, "index.html", {'products': product_list})
-        elif action == 'editProduct':
-            edit_product(request)
-            return render(request, "index.html", {'products': product_list})
         # Send email
         subject = "Details about all products"
         notify_admin(subject, product_list)
         return HttpResponse('Email sent successfully!')
-    return render(request, "index.html", 
-                  {'products': product_list, 
+    return render(request, "index.html",
+                  {'products': product_list,
                    'total_products': total_products,
                    'total_expired_products': total_expired_products,
                    'total_batches': total_batches}
-                   )
+                  )
 
 
 @login_required(login_url='authentication:login')
@@ -141,12 +140,12 @@ def search(request):
         subject = "Details about searched products"
         notify_admin(subject, product_list)
         return HttpResponse('Email sent successfully!')
-    return render(request, "index.html", 
-                  {'products': product_list, 
+    return render(request, "index.html",
+                  {'products': product_list,
                    'total_products': total_products,
                    'total_expired_products': total_expired_products,
                    'total_batches': total_batches}
-                   )
+                  )
 
 
 @login_required(login_url='authentication:login')

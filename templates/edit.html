@@ -10,16 +10,15 @@
 </head>
 <body>
     <div>
-        <form class="form" method="post" action="{% url 'product:add_product' %}">{% csrf_token %}
-          <input type="hidden" name="action" value="editProduct" required="">
-          <input type="text" name="Name" placeholder="Product Name" required="">
-          <input type="text" name="Manufacturer" placeholder="Manufacturer" required="">
-          <input type="text" name="BarCode" placeholder="Bar Code" required="">
-          <input required="" type="text" placeholder="Production date" onfocus="(this.type='date')" name="ProductionDate"/>
-          <input required="" type="text" placeholder="Expiry date" onfocus="(this.type='date')" name="ExpiryDate" />
-          <input type="number" name="Quantity" placeholder="Quantity" required="">
-          <input type="number" name="Price" placeholder="Price(in cedis)" required="">
-          <button type="submit">Add</button>
+        <form class="form" method="post">{% csrf_token %}
+          <input type="text" name="Name" placeholder="Product Name" required value="{{product.Name}}">
+          <input type="text" name="Manufacturer" placeholder="Manufacturer" required value="{{product.Manufacturer}}">
+          <input type="text" name="BarCode" placeholder="Bar Code" required value="{{product.BarCode}}">
+          <input type="date" value="{{product.ProductionDate}}" name="ProductionDate"/>
+          <input type="date" value="{{product.ExpiryDate}}" name="ExpiryDate"/>
+          <input type="number" name="Quantity" placeholder="Quantity" required value="{{product.Quantity}}">
+          <input type="number" name="Price" placeholder="Price(in cedis)" required value="{{product.Price}}">
+          <button type="submit">Save Changes</button>
         </form>
       </div>
 </body>

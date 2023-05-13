@@ -10,5 +10,5 @@ urlpatterns = [
     path('delete/<int:pk>/', views.delete_product, name='delete_product'),
     path('search/', views.search, name='search'),
     path('expired/', views.expired_products_view, name='expired_products'),
-    path('expiring/<int:days_threshold>/', views.expiring_products_view, name='expiring_products'),
+    path('expiring/<int:month>/', views.expiring_products_view, name='expiring_products'),
 ]

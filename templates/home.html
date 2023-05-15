@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script defer src="{% static 'script.js' %}"></script>
+    <title>Product Expiry</title>
+</head>
+<body>
+
+    <header>
+        <div class="left">
+            <p>Product Management</p>
+        </div>
+        <div class="right">
+            <form method="post">{% csrf_token %}
+                <button>Send email</button>
+            </form>
+            <a href="{% url 'authentication:logout_user' %}">
+                <button id="logout">Logout</button>
+            </a>
+        </div>
+    </header>
+
+    
+    <div class="modal" id="modal" style="height: 590px;">
+        <div class="modal-header">
+            <div class="title">Add a product</div>
+            <button style="background-color:black;" data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form style="background-color:transparent;position:relative;bottom:60px;" class="form" method="post" action="{% url 'product:add_product' %}">{% csrf_token %}
+                <input type="hidden" name="action" value="addProduct" required>
+                <input style="padding-left:10px;margin-top:20px;margin-bottom:10px;position:relative;top:5px;" type="text" name="Name" placeholder="Product Name" required>
+                <input style="padding-left:10px;margin-bottom:10px;" type="text" name="Manufacturer" placeholder="Manufacturer" required>
+                <input style="padding-left:10px;margin-bottom:10px;" type="text" name="BarCode" placeholder="Bar Code" required>
+                <span style="font-size:15px;position:absolute;left:50px;top:238px;">Production Date</span>
+                <input style="padding-left:10px;margin-bottom:0" type="date" name="ProductionDate" onfocus="(this.type='date')" required/>
+                <span style="font-size:15px;position:absolute;left:50px;top:295px;">Expiry Date</span>
+                <input style="padding-left:10px;margin-bottom:10px;" type="date" name="ExpiryDate" onfocus="(this.type='date')" required/>
+                <input style="padding-left:10px;margin-bottom:10px;" type="number" name="Quantity" placeholder="Quantity" required>
+                <input style="padding-left:10px;margin-bottom:10px;" type="number" name="Price" placeholder="Price(in cedis)" required>
+                <button style="position:relative;bottom:20px" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+    <div id="overlay"></div>
+
+
+    <div class="nav">
+        <div class="left">
+            <p>List of products</p>
+            <button data-modal-target="#modal" id="add">Create Product</button>
+        </div>
+        <div class="center">
+            <form id="expiring-products-form" action="{% url 'product:expiring_products' 0 %}" method="get">
+                <input type="number" name="month" id="month-input" placeholder="Months to expiry">
+                <button type="submit">Filter Products</button>
+            </form>
+        </div>
+        <div class="right">
+            <form action="{% url 'product:search' %}" method="get">
+                <input type="text" value="" name="q" placeholder="Search products">
+                <button>Search</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $('#month-input').on('input', function() {
+                var month = $(this).val();
+                var action = $('#expiring-products-form').attr('action').replace('0', month);
+                $('#expiring-products-form').attr('action', action);
+            });
+        });
+    </script>
+
+
+    <div class="details">
+        <div class="left">
+            <p>Total products</p>
+            <p>{{total_products}}</p>
+        </div>
+        <div class="center">
+            <p>Total batches</p>
+            <p>{{total_batches}}</p>
+        </div>
+        <div class="right">
+            <p>Total expired</p>
+            <p>{{total_expired_products}}</p>
+        </div>
+    </div>
+
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Manufacturer</th>
+            <th>Bar Code</th>
+            <th>Production Date</th>
+            <th>ExpiryDate</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{product.Name}}</td>
+            <td>{{product.Manufacturer}}</td>
+            <td>{{product.BarCode}}</td>
+            <td>{{product.ProductionDate}}</td>
+            <td>{{product.ExpiryDate}}</td>
+            <td>{{product.Quantity}}</td>
+            <td>{{product.Price}}</td>
+            <td>
+                <a href="{% url 'product:edit_product' pk=product.pk %}">
+                <button id="edit"><span class="material-symbols-outlined">
+                    edit
+                </span></button>
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'product:delete_product' pk=product.pk %}">
+                <button id="delete"><span class="material-symbols-outlined">
+                    delete
+                </span></button>
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+            <p style="font-size: 30px; text-align: center">No products found<p>
+        {% endfor %}
+        </table>
+
+</body>
+</html>

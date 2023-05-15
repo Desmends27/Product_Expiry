@@ -8,13 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
 </head>
-<body>
-    <div>
-        <form class="form" method="post">{% csrf_token %}
+<body style="margin:0; padding:0;">
+    <div style="position:absolute;width:100vw;display:flex;justify-content:center;" class="edit_form">
+        <form style="margin:0" class="form" method="post">{% csrf_token %}
+          <p>Edit {{product.Name}}</p>
           <input type="text" name="Name" placeholder="Product Name" required value="{{product.Name}}">
           <input type="text" name="Manufacturer" placeholder="Manufacturer" required value="{{product.Manufacturer}}">
           <input type="text" name="BarCode" placeholder="Bar Code" required value="{{product.BarCode}}">
+          <span style="font-size:15px;position:relative;left:20px;top:20px;">Production Date</span>
           <input type="date" value="{{product.ProductionDate}}" name="ProductionDate"/>
+          <span style="font-size:15px;position:relative;left:20px;top:20px;">Expiry Date</span>
           <input type="date" value="{{product.ExpiryDate}}" name="ExpiryDate"/>
           <input type="number" name="Quantity" placeholder="Quantity" required value="{{product.Quantity}}">
           <input type="number" name="Price" placeholder="Price(in cedis)" required value="{{product.Price}}">

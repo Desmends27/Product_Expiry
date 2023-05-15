@@ -60,12 +60,12 @@ def expired_products_view(request):
         action = request.POST.get('action')
         if action == 'addProduct':
             add_product(request)
-            return render(request, "index.html", {'products': expired_products})
+            return render(request, "home.html", {'products': expired_products})
         # Send email
         subject = "Expired Products"
         notify_admin(subject, expired_products)
         return HttpResponse('Email sent successfully!')
-    return render(request, "index.html",
+    return render(request, "home.html",
                   {'products': expired_products,
                    'total_products': total_products,
                    'total_expired_products': total_expired_products,
@@ -75,7 +75,11 @@ def expired_products_view(request):
 
 def expiring_products_view(request, month):
     today = date.today()
-    threshold_date = today + timedelta(days=int(month)) * 30
+    print(today)
+    print(month)
+    print(timedelta(days=int(month)) * 30)
+    threshold_date = today + timedelta(days=int(month)) * 31
+    print(threshold_date)
     expiring_products = Product.objects.filter(ExpiryDate__lte=threshold_date)
     total_products = expiring_products.count()
     total_expired_products = expiring_products.filter(ExpiryDate__lt=today).count()
@@ -84,12 +88,12 @@ def expiring_products_view(request, month):
         action = request.POST.get('action')
         if action == 'addProduct':
             add_product(request)
-            return render(request, "index.html", {'products': expiring_products})
+            return render(request, "home.html", {'products': expiring_products})
         # Send email
         subject = "Products due to expire"
         notify_admin(subject, expiring_products)
         return HttpResponse('Email sent successfully!')
-    return render(request, "index.html",
+    return render(request, "home.html",
                   {'products': expiring_products,
                    'total_products': total_products,
                    'total_expired_products': total_expired_products,
@@ -107,12 +111,12 @@ def products(request):
         action = request.POST.get('action')
         if action == 'addProduct':
             add_product(request)
-            return render(request, "index.html", {'products': product_list})
+            return render(request, "home.html", {'products': product_list})
         # Send email
         subject = "Details about all products"
         notify_admin(subject, product_list)
         return HttpResponse('Email sent successfully!')
-    return render(request, "index.html",
+    return render(request, "home.html",
                   {'products': product_list,
                    'total_products': total_products,
                    'total_expired_products': total_expired_products,
@@ -131,12 +135,12 @@ def search(request):
         action = request.POST.get('action')
         if action == 'addProduct':
             add_product(request)
-            return render(request, "index.html", {'products': product_list})
+            return render(request, "home.html", {'products': product_list})
         # Send email
         subject = "Details about searched products"
         notify_admin(subject, product_list)
         return HttpResponse('Email sent successfully!')
-    return render(request, "index.html",
+    return render(request, "home.html",
                   {'products': product_list,
                    'total_products': total_products,
                    'total_expired_products': total_expired_products,

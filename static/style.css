@@ -141,6 +141,11 @@ button{
     color: white;
     font-size: 15px;
     background-color: rgb(58, 175, 58);
+    transition: .5s;
+}
+button:hover{
+    box-shadow: 0 0 3px black;
+    cursor: pointer;
 }
 a{
     text-decoration: none;

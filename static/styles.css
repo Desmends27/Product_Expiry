@@ -29,6 +29,7 @@ button
     position: relative;
     left: 80%;
     border-radius: 20px;
+   
 }
 .menu ul{
   list-style: none;
@@ -300,3 +301,4 @@ button
   background-color: rgb(28, 217, 28);
   border-radius: 20px;
 }
+

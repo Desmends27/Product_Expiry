@@ -167,6 +167,7 @@ header #logout{
     background-color: rgb(0, 73, 0);
 }
 
+
 .nav, .details{
     display: flex;
     justify-content: space-between;
@@ -182,6 +183,10 @@ header #logout{
     height: 25px;
     width: 300px;
 }
+.nav form button{
+    margin-top: 5px;
+    width: max-content;
+}
 @media screen and (max-width:700px) {
     .nav form{
         display: flex;
@@ -192,10 +197,7 @@ header #logout{
         width: 100%;
     }
 }
-.nav form button{
-    margin-top: 5px;
-    width: max-content;
-}
+
 
 .details p{
     font-size: 20px;
@@ -204,6 +206,7 @@ header #logout{
 .details p:nth-child(even){
     font-size: 23px;
 }
+
 
 table {
     border-collapse: collapse;

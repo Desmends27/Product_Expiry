@@ -9,6 +9,26 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script defer src="{% static 'script.js' %}"></script>
     <title>Product Expiry</title>
+    <style>
+        .nav .center form a{
+            background-color:red;
+            margin-top: 5px;
+            width: max-content;
+            border: none;
+            padding: 5px;
+            border-radius: 3px;
+            color: white;
+            font-size: 16px;
+            background-color: rgb(58, 175, 58);
+        }
+        @media screen and (max-width:700px) {
+            .nav .center form a{
+                width: 97px;
+                text-align:center;
+                font-size: 17px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -37,7 +57,7 @@
                 <input type="hidden" name="action" value="addProduct" required>
                 <input style="padding-left:10px;margin-top:20px;margin-bottom:10px;position:relative;top:5px;" type="text" name="Name" placeholder="Product Name" required>
                 <input style="padding-left:10px;margin-bottom:10px;" type="text" name="Manufacturer" placeholder="Manufacturer" required>
-                <input style="padding-left:10px;margin-bottom:10px;" type="text" name="BarCode" placeholder="Bar Code" required>
+                <input style="padding-left:10px;margin-bottom:10px;" type="text" name="BarCode" placeholder="Bar Code">
                 <span style="font-size:15px;position:absolute;left:50px;top:238px;">Production Date</span>
                 <input style="padding-left:10px;margin-bottom:0" type="date" name="ProductionDate" onfocus="(this.type='date')" required/>
                 <span style="font-size:15px;position:absolute;left:50px;top:295px;">Expiry Date</span>
@@ -60,6 +80,7 @@
             <form id="expiring-products-form" action="{% url 'product:expiring_products' 0 %}" method="get">
                 <input type="number" name="month" id="month-input" placeholder="Months to expiry">
                 <button type="submit">Filter Products</button>
+                <a href="{% url "product:expired_products" %}">Expired only</a>
             </form>
         </div>
         <div class="right">

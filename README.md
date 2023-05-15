@@ -39,6 +39,6 @@ Click the "Save" button.
 1. Enter the search query in the search box on the home page.
 2. Click the "Search" button.
 
-## Receiving Email Notifications (in progress)
+## Receiving Email Notifications
 1. Set up email settings in the Django settings file.
 2. The program will automatically send email notifications to the email address specified in the settings.py file when a product is about to expire.

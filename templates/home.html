@@ -80,7 +80,7 @@
             <form id="expiring-products-form" action="{% url 'product:expiring_products' 0 %}" method="get">
                 <input type="number" name="month" id="month-input" placeholder="Months to expiry">
                 <button type="submit">Filter Products</button>
-                <a href="{% url "product:expired_products" %}">Expired only</a>
+                <a href="{% url 'product:expired_products' %}">Expired only</a>
             </form>
         </div>
         <div class="right">
